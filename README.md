@@ -12,30 +12,32 @@ This is a web-based save editor for the Devil's Survivor DS game. Currently only
 
 Contributors:
 -------------
--CollosalPokemon
+~CollosalPokemon
 
--Kyohack
+~Kyohack
 
 
 
-Thread:
+Threads:
 -------
-Threads will be posted on GBAtemp and PokéCheats forums, shortly.
+http://pokecheats.net/forum/showthread.php?14686-Devil-s-Survivor-Savegame-Editor
+
+http://gbatemp.net/threads/346197/
 
 
 
 To do:
 ------
--Research checksum algorithm (current algorithm only allows for small edits/changes).
+~Research checksum algorithm (current algorithm only allows for small edits/changes).
 
--Research leader/demon names.
+~Research leader/demon names.
 
--Add field to edit money "macca" (int32 at 0x484).
+~Add field to edit money "macca" (int32 at 0x484).
 
--Add field to edit shop rating (int32 at 0x488).
+~Add field to edit shop rating (int32 at 0x488).
 
--Add field to edit player names (Shift-JIS encoded text at 0x041D).
+~Add field to edit player names (Shift-JIS encoded text at 0x041D).
 
--Research a possible (epoch?) timestamp (int32 at 0x92C).
+~Research a possible (epoch?) timestamp (int32 at 0x92C).
 
--Research quick save data (0x9C8 to end of file).
+~Research quick save data (0x9C8 to end of file).
