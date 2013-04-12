@@ -758,6 +758,9 @@ function showPlayer($player, $label) {
 
 // Display savegame upload form.
 echo "
+This save editor for the Devil's Survivor DS game currently only supports <b>raw</b> save files. Other formats will be allowed soon.<br /><br />
+Please note:<br />
+<b>Research on the game's checksum algorithm is incomplete.</b> If you make too many changes to your save file, then the game will report the save as 'corrupt.' Always remember to backup your save file before editing it! If you find any bugs, please report them <a href='http://pokecheats.net/forum/showthread.php?14686-Devil-s-Survivor-Savegame-Editor'>here</a>.<br /><br />
     <form action=\"devils-survivor-savegame-editor.php\" method=\"post\" enctype=\"multipart/form-data\">
         <input type=\"file\" name=\"savegame\" /><br />
         <input type=\"submit\" name=\"upload\" value=\"Load\" />
