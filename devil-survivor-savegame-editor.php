@@ -1,6 +1,6 @@
 <?php
 //
-// Description:       Devil's Survivor savegame editor.
+// Description:       Devil Survivor savegame editor.
 // Contributor(s):    CollosalPokemon, Kyohack
 // Last revision:     4/12/2013
 //
@@ -156,10 +156,12 @@ if (isset($_POST['save'])) {
     die($data);
 } else {
     // CMS integration for PokéCheats
+    if (file_exists("../includes/global.php")) {
     $content_type = "search";
     $content_loc = "tools";
     $page_title = "Devil's Survivor savegame editor";
     require("../includes/global.php");
+    }
 
     // Check if savegame has been uploaded.
     if (isset($_POST['upload']) AND strlen(file_get_contents($_FILES['savegame']['tmp_name'])) > 0) {
@@ -830,5 +832,7 @@ if (isset($_POST['upload']) AND $savegameSize > 0) {
 }
 
 // More CMS integration for PokéCheats
-include "../includes/footer.php";
+if (file_exists("../includes/footer.php")) {
+    include "../includes/footer.php";
+}
 ?>

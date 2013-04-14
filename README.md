@@ -1,12 +1,12 @@
 ================================
-Devil's Survivor Savegame Editor
+Devil Survivor Savegame Editor
 ================================
 
 
 
 Description:
 ------------
-This is a web-based save editor for the Devil's Survivor DS game. Currently only raw savegame files are supported, but other formats will be allowed soon. The savegame editor is hosted at: http://pokecheats.net/tools/devils-survivor-savegame-editor.php
+This is a web-based save editor for the Devil Survivor DS game. Currently only raw savegame files are supported, but other formats will be allowed soon. The savegame editor is hosted at: http://pokecheats.net/tools/devils-survivor-savegame-editor.php
 
 
 
@@ -20,7 +20,7 @@ Contributors:
 
 Threads:
 -------
-http://pokecheats.net/forum/showthread.php?14686-Devil-s-Survivor-Savegame-Editor
+http://pokecheats.net/forum/showthread.php?14686-Devil-Survivor-Savegame-Editor
 
 http://gbatemp.net/threads/346197/
 
