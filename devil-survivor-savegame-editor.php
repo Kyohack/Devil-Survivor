@@ -607,15 +607,15 @@ function showPlayer($player, $label) {
     }
 
     // Output player info in HTML.
-    $ret = 'Lv: <input type="text" name="lv-' . $label . '" style="width: 50px;" value="' . ord($player['lv']) . '" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    Exp: <input type="text" name="exp-' . $label . '" style="width: 50px;" value="' . $player['exp'][1] . '" /><br />
+    $ret = 'Lv: <input type="text" name="lv-' . $label . '" style="width: 40px;" value="' . ord($player['lv']) . '" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    Exp: <input type="text" name="exp-' . $label . '" style="width: 40px;" value="' . $player['exp'][1] . '" /><br />
     <table class="sortable" style="width: 150px;">
         <tbody>
             <tr>
                 <td>
                     HP:
                 </td>
-                <td><input type="text" name="hp-' . $label . '" style="width: 50px;" value="' . $player['hp'][1] . '" /></td>
+                <td><input type="text" name="hp-' . $label . '" style="width: 40px;" value="' . $player['hp'][1] . '" /></td>
                 <td>
                 </td>
             </tr>
@@ -623,41 +623,41 @@ function showPlayer($player, $label) {
                 <td>
                     MP:
                 </td>
-                <td><input type="text" name="mp-' . $label . '" style="width: 50px;" value="' . $player['mp'][1] . '" /></td>
+                <td><input type="text" name="mp-' . $label . '" style="width: 40px;" value="' . $player['mp'][1] . '" /></td>
                 <td>
                 </td>
             </tr>
             <tr>
                 <td>SR:</td>
-                <td><input type="text" name="sr-' . $label . '" style="width: 50px;" value="' . ord($player['sr']) . '" /></td>
+                <td><input type="text" name="sr-' . $label . '" style="width: 40px;" value="' . ord($player['sr']) . '" /></td>
                 <td>
                     <div style="width: ' . ord($player['sr']) . 'px;background-color: #216B84;height: 3px;"></div>
                 </td>
             </tr>
             <tr>
                 <td>MA:</td>
-                <td><input type="text" name="ma-' . $label . '" style="width: 50px;" value="' . ord($player['ma']) . '" /></td>
+                <td><input type="text" name="ma-' . $label . '" style="width: 40px;" value="' . ord($player['ma']) . '" /></td>
                 <td>
                     <div style="width: ' . ord($player['ma']) . 'px;background-color: #216B84;height: 3px;"></div>
                 </td>
             </tr>
             <tr>
                 <td>VI:</td>
-                <td><input type="text" name="vi-' . $label . '" style="width: 50px;" value="' . ord($player['vi']) . '" /></td>
+                <td><input type="text" name="vi-' . $label . '" style="width: 40px;" value="' . ord($player['vi']) . '" /></td>
                 <td>
                     <div style="width: ' . ord($player['vi']) . 'px;background-color: #216B84;height: 3px;"></div>
                 </td>
             </tr>
             <tr>
                 <td>AG:</td>
-                <td><input type="text" name="ag-' . $label . '" style="width: 50px;" value="' . ord($player['ag']) . '" /></td>
+                <td><input type="text" name="ag-' . $label . '" style="width: 40px;" value="' . ord($player['ag']) . '" /></td>
                 <td>
                     <div style="width: ' . ord($player['ag']) . 'px;background-color: #216B84;height: 3px;"></div>
                 </td>
             </tr>
         </tbody>
     </table>
-    Move: <input type="text" name="move-' . $label . '" style="width: 50px;" value="' . ord($player['move']) . '" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Speed: <input type="text" name="speed-' . $label . '" style="width: 50px;" value="' . ord($player['speed']) . '" /><br /><br />
+    Move: <input type="text" name="move-' . $label . '" style="width: 40px;" value="' . ord($player['move']) . '" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Speed: <input type="text" name="speed-' . $label . '" style="width: 40px;" value="' . ord($player['speed']) . '" /><br /><br />
     <table class="sortable">
         <tbody>
             <tr>
@@ -797,8 +797,8 @@ if (isset($_POST['upload']) AND $savegameSize > 0) {
                 <input type="hidden" name="filename" value="' . urlencode($_FILES['savegame']['name']) . '" />
                 <input type="submit" name="save" value="Save" />
                 <br />
-                Macca: <input type="text" name="macca" style="width: 50px;" value="' . $savegame['macca'][1] . '" /><br />
-                Shop Rating: <input type="text" name="shopRating" style="width: 50px;" value="' . $savegame['shopRating'][1] . '" />
+                Macca: <input type="text" name="macca" style="width: 40px;" value="' . $savegame['macca'][1] . '" /><br />
+                Shop Rating: <input type="text" name="shopRating" style="width: 40px;" value="' . $savegame['shopRating'][1] . '" />
                 <table class="sortable">
                     <tbody>
                         <tr>
