@@ -59,13 +59,22 @@ function getSave($savegame) {
     $ret['unknown3'] = substr($savegame, 0x260, 0x1A0);
 
     // Unknown data. Assumed to contain info for leader names.
-    $ret['unknown4'] = substr($savegame, 0x400, 0x52C);
+    $ret['unknown4'] = substr($savegame, 0x400, 0x84);
+
+    // Macca (money).
+    $ret['macca'] = substr($savegame, 0x484, 0x4);
+
+    // Shop rating.
+    $ret['shopRating'] = substr($savegame, 0x488, 0x4);
+
+    // This segment of data is unknown.
+    $ret['unknown5'] = substr($savegame, 0x48C, 0x4A0);
 
     // Timestamp of some sort. Appears to be in little endian format, and follows a structure similar to epoch timestamps.
     $ret['timestamp'] = substr($savegame, 0x92C, 0x4);
 
     // This segment of data is unknown.
-    $ret['unknown5'] = substr($savegame, 0x930, 0x98);
+    $ret['unknown6'] = substr($savegame, 0x930, 0x98);
 
     // Quick save data. Assumed to contain a similar structure to main save data.
     $ret['quickSave'] = substr($savegame, 0x9C8, 0x1628);
@@ -114,6 +123,12 @@ if (isset($_POST['save'])) {
     foreach ($bytes as $byte) {
         $oldSum = $oldSum + ord($byte);
     }
+
+    // Edit macca.
+    $savegame['macca'] = pack('V', $_POST['macca']);
+
+    // Edit shop rating.
+    $savegame['shopRating'] = pack('V', $_POST['shopRating']);
 
     // Perform edit operations for all variables for all players on savegame.
     $labels = array('l0', 'l1', 'l2', 'l3', 'd0', 'd1', 'd2', 'd3', 'd4', 'd5', 'd6', 'd7');
@@ -592,57 +607,57 @@ function showPlayer($player, $label) {
     }
 
     // Output player info in HTML.
-    $ret = '<span>Lv</span>: <input type="text" name="lv-' . $label . '" style="width: 30px;" value="' . ord($player['lv']) . '" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <span>Exp</span>: <input type="text" name="exp-' . $label . '" style="width: 30px;" value="' . $player['exp'][1] . '" /><br />
+    $ret = 'Lv: <input type="text" name="lv-' . $label . '" style="width: 50px;" value="' . ord($player['lv']) . '" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    Exp: <input type="text" name="exp-' . $label . '" style="width: 50px;" value="' . $player['exp'][1] . '" /><br />
     <table class="sortable" style="width: 150px;">
         <tbody>
             <tr>
                 <td>
-                    <span>HP</span>:
+                    HP:
                 </td>
-                <td><input type="text" name="hp-' . $label . '" style="width: 30px;" value="' . $player['hp'][1] . '" /></td>
+                <td><input type="text" name="hp-' . $label . '" style="width: 50px;" value="' . $player['hp'][1] . '" /></td>
                 <td>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <span>MP</span>:
+                    MP:
                 </td>
-                <td><input type="text" name="mp-' . $label . '" style="width: 30px;" value="' . $player['mp'][1] . '" /></td>
+                <td><input type="text" name="mp-' . $label . '" style="width: 50px;" value="' . $player['mp'][1] . '" /></td>
                 <td>
                 </td>
             </tr>
             <tr>
                 <td>SR:</td>
-                <td><input type="text" name="sr-' . $label . '" style="width: 30px;" value="' . ord($player['sr']) . '" /></td>
+                <td><input type="text" name="sr-' . $label . '" style="width: 50px;" value="' . ord($player['sr']) . '" /></td>
                 <td>
                     <div style="width: ' . ord($player['sr']) . 'px;background-color: #216B84;height: 3px;"></div>
                 </td>
             </tr>
             <tr>
                 <td>MA:</td>
-                <td><input type="text" name="ma-' . $label . '" style="width: 30px;" value="' . ord($player['ma']) . '" /></td>
+                <td><input type="text" name="ma-' . $label . '" style="width: 50px;" value="' . ord($player['ma']) . '" /></td>
                 <td>
                     <div style="width: ' . ord($player['ma']) . 'px;background-color: #216B84;height: 3px;"></div>
                 </td>
             </tr>
             <tr>
                 <td>VI:</td>
-                <td><input type="text" name="vi-' . $label . '" style="width: 30px;" value="' . ord($player['vi']) . '" /></td>
+                <td><input type="text" name="vi-' . $label . '" style="width: 50px;" value="' . ord($player['vi']) . '" /></td>
                 <td>
                     <div style="width: ' . ord($player['vi']) . 'px;background-color: #216B84;height: 3px;"></div>
                 </td>
             </tr>
             <tr>
                 <td>AG:</td>
-                <td><input type="text" name="ag-' . $label . '" style="width: 30px;" value="' . ord($player['ag']) . '" /></td>
+                <td><input type="text" name="ag-' . $label . '" style="width: 50px;" value="' . ord($player['ag']) . '" /></td>
                 <td>
                     <div style="width: ' . ord($player['ag']) . 'px;background-color: #216B84;height: 3px;"></div>
                 </td>
             </tr>
         </tbody>
     </table>
-    Move: <input type="text" name="move-' . $label . '" style="width: 30px;" value="' . ord($player['move']) . '" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Speed: <input type="text" name="speed-' . $label . '" style="width: 30px;" value="' . ord($player['speed']) . '" /><br /><br />
+    Move: <input type="text" name="move-' . $label . '" style="width: 50px;" value="' . ord($player['move']) . '" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Speed: <input type="text" name="speed-' . $label . '" style="width: 50px;" value="' . ord($player['speed']) . '" /><br /><br />
     <table class="sortable">
         <tbody>
             <tr>
@@ -760,10 +775,10 @@ function showPlayer($player, $label) {
 
 // Display savegame upload form.
 echo "
-This save editor for the Devil's Survivor DS game currently only supports <b>raw</b> save files. Other formats will be allowed soon.<br /><br />
+This save editor for the Devil Survivor DS game currently only supports <b>raw</b> save files. Other formats will be allowed soon.<br /><br />
 Please note:<br />
-<b>Research on the game's checksum algorithm is incomplete.</b> If you make too many changes to your save file, then the game will report the save as 'corrupt.' Always remember to backup your save file before editing it! If you find any bugs, please report them <a href='http://pokecheats.net/forum/showthread.php?14686-Devil-s-Survivor-Savegame-Editor'>here</a>.<br /><br />
-    <form action=\"devils-survivor-savegame-editor.php\" method=\"post\" enctype=\"multipart/form-data\">
+<b>Research on the game's checksum algorithm is incomplete.</b> If you make too many changes to your save file, then the game will report the save as 'corrupt.' Always remember to backup your save file before editing it! If you find any bugs, please report them <a href='http://pokecheats.net/forum/showthread.php?14686-Devil-Survivor-Savegame-Editor'>here</a>.<br /><br />
+    <form action=\"devil-survivor-savegame-editor.php\" method=\"post\" enctype=\"multipart/form-data\">
         <input type=\"file\" name=\"savegame\" /><br />
         <input type=\"submit\" name=\"upload\" value=\"Load\" />
     </form>";
@@ -774,12 +789,16 @@ if (isset($_POST['upload']) AND $savegameSize > 0) {
     if ($savegameSize >= 0x1FFF) {
         // Output save info.
         if ($savegame['magic'] == 'Devi') {
+            $savegame['macca'] = unpack('V', $savegame['macca']);
+            $savegame['shopRating'] = unpack('V', $savegame['shopRating']);
             echo '
-            <form action="devils-survivor-savegame-editor.php" method="post" enctype="multipart/form-data">
+            <form action="devil-survivor-savegame-editor.php" method="post" enctype="multipart/form-data">
                 <input type="hidden" name="savegame" value="' . urlencode(file_get_contents($_FILES['savegame']['tmp_name'])) . '" />
                 <input type="hidden" name="filename" value="' . urlencode($_FILES['savegame']['name']) . '" />
                 <input type="submit" name="save" value="Save" />
                 <br />
+                Macca: <input type="text" name="macca" style="width: 50px;" value="' . $savegame['macca'][1] . '" /><br />
+                Shop Rating: <input type="text" name="shopRating" style="width: 50px;" value="' . $savegame['shopRating'][1] . '" />
                 <table class="sortable">
                     <tbody>
                         <tr>

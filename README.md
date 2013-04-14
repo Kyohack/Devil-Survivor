@@ -32,10 +32,6 @@ To do:
 
 ~Research leader/demon names.
 
-~Add field to edit money "macca" (int32 at 0x484).
-
-~Add field to edit shop rating (int32 at 0x488).
-
 ~Add field to edit player names (Shift-JIS encoded text at 0x041D).
 
 ~Research a possible (epoch?) timestamp (int32 at 0x92C).
